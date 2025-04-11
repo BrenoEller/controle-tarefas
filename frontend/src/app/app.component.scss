@@ -1,0 +1,24 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #282c34;
+    color: white;
+
+    ul {
+        display: flex;
+        gap: 40px;
+        margin: 0;
+
+        li {
+            list-style: none;
+
+            a {
+                color: white;
+                text-decoration: none;
+                cursor: pointer;
+            }
+        }
+    }
+}

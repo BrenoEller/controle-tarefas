@@ -1,0 +1,65 @@
+<div class="container mt-4">
+    <h2 class="mb-4">Minhas Tarefas</h2>
+
+    <div *ngIf="mensagem" class="alert alert-{{ tipoMensagem }} alert-dismissible fade show" role="alert">
+      {{ mensagem }}
+      <button type="button" class="btn-close" aria-label="Fechar" (click)="mensagem = ''"></button>
+    </div>
+  
+    <form [formGroup]="form" (ngSubmit)="salvar()">
+      <div class="mb-3">
+        <label for="nome" class="form-label">Nome</label>
+        <input type="text" id="nome" class="form-control" formControlName="nome">
+      </div>
+  
+      <div class="mb-3">
+        <label for="descricao" class="form-label">Descrição</label>
+        <textarea id="descricao" class="form-control" formControlName="descricao"></textarea>
+      </div>
+  
+      <div class="mb-3">
+        <label for="data_hora" class="form-label">Data e Hora</label>
+        <input type="datetime-local" id="data_hora" class="form-control" formControlName="data_hora">
+      </div>
+  
+      <button type="submit" class="btn btn-primary me-2">
+        {{ editandoId ? 'Atualizar' : 'Criar' }}
+      </button>
+      <button type="button" class="btn btn-secondary" *ngIf="editandoId" (click)="cancelarEdicao()">Cancelar</button>
+    </form>
+  
+    <hr class="my-4">
+  
+    <ul class="list-group">
+      <li *ngFor="let tarefa of tarefas" class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          <h5>{{ tarefa.nome }}</h5>
+          <p>{{ tarefa.descricao }}</p>
+          <small>{{ tarefa.data_hora | date:'short' }}</small>
+        </div>
+        <div>
+          <button class="btn btn-sm btn-warning me-2" (click)="editar(tarefa)">Editar</button>
+          <button class="btn btn-sm btn-danger" (click)="pedirConfirmacaoExclusao(tarefa.id)">Excluir</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+  
+  <!-- Modal de Confirmação -->
+  <div class="modal fade" id="confirmarExclusaoModal" tabindex="-1" aria-labelledby="confirmarExclusaoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmarExclusaoModalLabel">Confirmar exclusão</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+        <div class="modal-body">
+          Tem certeza que deseja excluir esta tarefa?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger" (click)="confirmarExclusao()">Excluir</button>
+        </div>
+      </div>
+    </div>
+  </div>

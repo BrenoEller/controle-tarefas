@@ -1,0 +1,18 @@
+<form class="container mt-5" [formGroup]="form" (ngSubmit)="submit()">
+    <div class="mb-3">
+        <label for="username" class="form-label">Usuário</label>
+        <input type="text" id="username" formControlName="username" class="form-control" autocomplete="username" />
+    </div>
+
+    <div class="mb-3">
+        <label for="password" class="form-label">Senha</label>
+        <input type="password" id="password" formControlName="password" class="form-control" autocomplete="new-password" />
+    </div>
+
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" id="email" formControlName="email" class="form-control" autocomplete="email" />
+    </div>
+
+    <button class="btn btn-primary" type="submit">Cadastrar</button>
+</form>

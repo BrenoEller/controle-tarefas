@@ -1,0 +1,18 @@
+<nav>
+    <ul>
+        <li *ngIf="!(auth.isAuthenticated$ | async)">
+            <a href="/register">Registrar</a>
+        </li>
+        <li *ngIf="auth.isAuthenticated$ | async">
+            <a href="/tarefas">Home</a>
+        </li>
+        <li *ngIf="auth.getUsuarioLocal()?.is_admin">
+            <a href="/usuarios">Gerenciador de usuários</a>
+          </li>
+        <li *ngIf="auth.isAuthenticated$ | async">
+            <a (click)="logout()">Sair</a>
+        </li>
+    </ul>
+</nav>
+
+<router-outlet></router-outlet>
