@@ -26,13 +26,13 @@ php artisan serve
 
 ### Frontend (.\frontend)
 ```bash
-Frontend entre na pasta ./frontend
+Entre na pasta ./frontend
 npm install
 ng serve
 Acesse: http://localhost:4200
 ```
 
-Usuário padrão para login inicial:
+Usuário Admin para login inicial:
 ```bash
 Nome: admin
 Senha: admin123
